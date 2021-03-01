@@ -173,7 +173,7 @@ void timedRun(int *p,int n, int op){
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
-        printf("Total Comparisons: %d",COMPCOUNT);
+        printf("Total Comparisons: %d \n",COMPCOUNT);
     }
     else if(op==1){
         //run quicksort
@@ -183,7 +183,7 @@ void timedRun(int *p,int n, int op){
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
-        printf("Total Comparisons: %d",COMPCOUNT);
+        printf("Total Comparisons: %d \n",COMPCOUNT);
     }
     else{
         //run heapsort
@@ -193,7 +193,7 @@ void timedRun(int *p,int n, int op){
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
-        printf("Total Comparisons: %d",COMPCOUNT);
+        printf("Total Comparisons: %d \n",COMPCOUNT);
     }
     if(n<1000){
         printArray(p,n);//print sorted array if n<1024
