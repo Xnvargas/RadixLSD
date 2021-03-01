@@ -187,7 +187,7 @@ void timedRun(int *p,int n, int op){
     }
     else{
         //run heapsort
-        printf("Running Quicksort: \n");
+        printf("Running Heapsort: \n");
         start=clock();
         myheapsort(p,n);
         end=clock();
