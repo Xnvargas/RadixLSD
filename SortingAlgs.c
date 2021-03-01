@@ -34,10 +34,12 @@ bool COMPARE(int x, int y,int op){ //returns 1 if True 0 if false
 
 void merge(int arr[], int left, int middle, int right)
 {
+    printf("Starting Merge...\n");
     int i, j, k;
     int n1 = middle - left + 1;
     int n2 = right - middle;
-    int L[n1], R[n2];
+    int *L = malloc(sizeof(int) * n1);
+    int *R = malloc(sizeof(int) * n2);
 
     for (i = 0; i < n1; i++)
         L[i] = arr[left + i];
@@ -69,6 +71,7 @@ void merge(int arr[], int left, int middle, int right)
 }
 
 void mergeSort(int A[],int l, int r){
+    printf("Entering MergeSort...\n");
     if(l<r){
         int m = 1+(r-1)/2;
         mergeSort(A,l,m);
