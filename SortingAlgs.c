@@ -71,7 +71,7 @@ void merge(int arr[], int left, int middle, int right)
 }
 
 void mergeSort(int A[],int l, int r){
-    printf("Entering MergeSort...\n");
+    printf("Entering MergeSort with left=(%d), right=(%d)...\n",l,r);
     if(l<r){
         int m = 1+(r-1)/2;
         mergeSort(A,l,m);
