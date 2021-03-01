@@ -34,7 +34,6 @@ bool COMPARE(int x, int y,int op){ //returns 1 if True 0 if false
 
 void merge(int arr[], int left, int middle, int right)
 {
-    printf("Starting Merge...\n");
     int i, j, k;
     int n1 = middle - left + 1;
     int n2 = right - middle;
@@ -71,7 +70,6 @@ void merge(int arr[], int left, int middle, int right)
 }
 
 void mergeSort(int A[],int l, int r){
-    printf("Entering MergeSort with left=(%d), right=(%d)...\n",l,r);
     if(l<r){
         int m = l+(r-l)/2;
         mergeSort(A,l,m);
@@ -222,6 +220,7 @@ void analyzeFunction(int n,int op){
     for(int i=0;i<3;i++){
         timedRun(p,n,i);
     }
+    free(arr);
 }
 void analyzeFunctions(int n){
     for(int i=0;i<3;i++){
