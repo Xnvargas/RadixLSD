@@ -32,30 +32,6 @@ bool COMPARE(int x, int y,int op){ //returns 1 if True 0 if false
 
 /* MERGE SORT */
 
-//void cmerge(int A[], int m, int B[], int n, int C[]){
-//    int i=1;j=1;k=1;
-//    while (m>=i && n>=j){
-//        if (COMPARE(A[i],B[j],4)){
-//            C[k] = A[i];
-//            i++;
-//        }else{
-//            C[k] = B[j];
-//            j++;
-//        }
-//        k++;
-//    }
-//    while (m>=i){
-//        C[k] = A[i];
-//        i++;
-//        k++;
-//    }
-//    while (n>=j){
-//        C[k] = B[j];
-//        j++;
-//        k++;
-//    }
-//}
-
 void merge(int arr[], int left, int middle, int right)
 {
     int i, j, k;
@@ -223,22 +199,22 @@ void timedRun(int *p,int n, int op){
     }
 }
 void analyzeFunction(int n,int op){
-    int arr[n];
+    int *arr = malloc(sizeof(int)*n);
     int *p;
     if (op==0){ // 0= random variables
-        printf("Random Array: \n");
+        printf("Random Array: n= %d \n",n);
         p=randomArray(n,arr); //init array of random vars
     }
     else if (op==1){
-        printf("Best Case Array: \n");
+        printf("Best Case Array: n = %d \n",n);
         p=bestCase(n,arr); //init array of best case scenario
     }
     else{
-        printf("Worst Case Array:\n");
+        printf("Worst Case Array: n = %d \n",n);
         p=worstCase(n,arr); //init array of worst case scenario
     }
     if(n<1000){
-        printArray(p,n);//print unsorted array if n<1024
+        printArray(p,n);//print unsorted array if n<1000
     }
     for(int i=0;i<3;i++){
         timedRun(p,n,i);
@@ -252,11 +228,15 @@ void analyzeFunctions(int n){
 
 int main(int argc, char *argv[]){
     int n = 32; // initialize array size 32
+    printf("Running analysis on n=32...\n");
     analyzeFunctions(n);
+    printf("Running analysis on n=1024...\n");
     n=1024;
     analyzeFunctions(n);
+    printf("Running analysis on n=32768...\n");
     n=32768;
     analyzeFunctions(n);
+    printf("Running analysis on n=1048576...\n");
     n=1048576;
     analyzeFunctions(n);
     return 0;
