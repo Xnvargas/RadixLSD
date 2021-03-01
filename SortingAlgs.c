@@ -113,15 +113,16 @@ void myheapsort(int arr[],int n){
 
 /* BEGIN QUICKSORT */
 int partition(int arr[], int low, int high){
-    int pivot = arr[high]; //pivot
+    int pivot = arr[high];
     int i = (low-1);
-    for (int j=low; j<= high; j++){
+    for (int j=low; j<= high -1; j++){
         if(COMPARE(arr[j],pivot,1)){
             i++;
             SWAP(arr,i,j);
         }
     }
     SWAP(arr,i+1,high);
+
     return (i+1);
 
 }
