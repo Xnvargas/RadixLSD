@@ -94,7 +94,7 @@ void pushdown(int arr[], int n, int r){
     if (2*r > n){
         return;
     }
-    if(2*r == n or COMPARE(arr[2*r],arr[2*r+1],4)){
+    if(2*r == n || COMPARE(arr[2*r],arr[2*r+1],4)){
         s=2*r;
     }
     else{
