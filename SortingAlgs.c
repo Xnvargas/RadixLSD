@@ -227,7 +227,7 @@ void timedRun(int *p,int n, int op){
         //run heapsort
         printf("Running Heapsort: \n");
         start=clock();
-        buildHeap(p,n,1);
+        myheapsort(p,n);
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
