@@ -89,7 +89,8 @@ void mergeSort(int A[],int l, int r){
 /* HeapSort */
 /* To heapify a subtree with node i which is an index in arr[]. n is size of the heap. */
 
-void pushdown(int arr[], int n){
+void pushdown(int arr[], int n, int r){
+    int s;
     if (2*r > n){
         return;
     }
