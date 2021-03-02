@@ -88,6 +88,29 @@ void mergeSort(int A[],int l, int r){
 
 /* HeapSort */
 /* To heapify a subtree with node i which is an index in arr[]. n is size of the heap. */
+
+void pushdown(int arr[], int n){
+    if (2*r > n){
+        return;
+    }
+    if(2*r == n or COMPARE(arr[2*r],arr[2*r+1],4)){
+        s=2*r;
+    }
+    else{
+        s=2*r+1;
+    }
+    if(COMPARE(arr[r],arr[s],1)){
+        SWAP(arr,arr[r],arr[s]);
+        pushdown(arr,n,s);
+    }
+}
+void buildHeap(int arr[],int n, int r){
+    if(2*r>n){return;}
+    buildHeap(arr,n,2*r);
+    buildHeap(arr,n,2*r+1);
+    pushdown(arr,n,r);
+}
+
 void heapify(int arr[], int n, int i){
     int max = i;
     int leftChild = 2*i +1;
@@ -119,26 +142,6 @@ void myheapsort(int arr[],int n){
 /* End HEAPSORT */
 
 /* BEGIN QUICKSORT */
-int partition(int arr[], int low, int high){
-    int pivot = arr[high];
-    int i = (low-1);
-    for (int j=low; j<= high -1; j++){
-        if(COMPARE(arr[j],pivot,1)){
-            i++;
-            SWAP(arr,i,j);
-        }
-    }
-    SWAP(arr,i+1,high);
-    return (i+1);
-}
-
-void quickSort(int arr[], int low, int high){
-    if (low < high){
-        int pi = partition(arr,low,high);
-        quickSort(arr,low,pi-1);
-        quickSort(arr,pi+1,high);
-    }
-}
 
 void cQuickSort(int arr[],int left, int right){
     if(left >= right){
@@ -223,7 +226,7 @@ void timedRun(int *p,int n, int op){
         //run heapsort
         printf("Running Heapsort: \n");
         start=clock();
-        myheapsort(p,n);
+        buildHeap(p,n,1);
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
