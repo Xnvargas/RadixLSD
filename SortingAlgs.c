@@ -11,7 +11,7 @@ void SWAP(int arr[],int indexOne,int indexTwo){
     arr[indexOne] = arr[indexTwo];
     arr[indexTwo] = temp;
 }
-int random(int lowerBound, int upperBound){
+int myrandom(int lowerBound, int upperBound){
     int i, num;
     for (i=0; i<1;i++){
         num = (rand() % (upperBound - lowerBound +1))+ lowerBound;
@@ -144,7 +144,7 @@ void cQuickSort(int arr[],int left, int right){
     if(left >= right){
         return;
     }
-    int k = random(left,right); // init random pivot index
+    int k = myrandom(left,right); // init random pivot index
     int pivot = arr[k]; // find the value at pivot
     SWAP(arr,arr[left],arr[right]);
     int l=left+1;
