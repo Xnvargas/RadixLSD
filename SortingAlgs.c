@@ -5,11 +5,18 @@
 #include <stdbool.h>
 #include <limits.h>
 
-int COMPCOUNT;
+unsigned COMPCOUNT;
 void SWAP(int arr[],int indexOne,int indexTwo){
     int temp = arr[indexOne];
     arr[indexOne] = arr[indexTwo];
     arr[indexTwo] = temp;
+}
+int random(int lowerBound, int upperBound){
+    int i, num;
+    for (i=0; i<1;i++){
+        num = (rand() % (upperBound - lowerBound +1))+ lowerBound;
+    }
+    return num;
 }
 bool COMPARE(int x, int y,int op){ //returns 1 if True 0 if false
     COMPCOUNT++;
@@ -122,16 +129,42 @@ int partition(int arr[], int low, int high){
         }
     }
     SWAP(arr,i+1,high);
-
     return (i+1);
-
 }
+
 void quickSort(int arr[], int low, int high){
     if (low < high){
         int pi = partition(arr,low,high);
         quickSort(arr,low,pi-1);
         quickSort(arr,pi+1,high);
     }
+}
+
+void cQuickSort(int arr[],int left, int right){
+    if(left >= right){
+        return;
+    }
+    int k = random(left,right); // init random pivot index
+    int pivot = arr[k]; // find the value at pivot
+    SWAP(arr,arr[left],arr[right]);
+    int l=left+1;
+    int r = right;
+    //inward scan to partition
+    while (l <= r){
+        while (l<=r && COMPARE(arr[l],pivot,4)){
+            l=l+1;
+        }
+        while(l<=r && COMPARE(arr[r],pivot,0)){
+            r=r-1;
+        }
+        if(l<r){
+            SWAP(arr,arr[l],arr[r]);
+            l=l+1;r=r-1;
+        }
+    }
+    SWAP(arr,arr[left],arr[r]);
+    cQuickSort(arr,left,r-1);
+    cQuickSort(arr,r+1,right);
 }
 
 /*   END QUICKSORT     */
@@ -180,7 +213,7 @@ void timedRun(int *p,int n, int op){
         //run quicksort
         printf("Running Quicksort: \n");
         start=clock();
-        quickSort(p,0,n-1);
+        cQuickSort(p,0,n-1);
         end=clock();
         cpuTimeUsed = ((double) (end-start))/CLOCKS_PER_SEC;
         printf("Total Runtime: %lf \n",cpuTimeUsed);
@@ -224,8 +257,13 @@ void analyzeFunction(int n,int op){
     free(arr);
 }
 void analyzeFunctions(int n){
-    for(int i=0;i<3;i++){
-        analyzeFunction(n,i);
+    if (n<=32){
+        for(int i=0;i<3;i++){
+            analyzeFunction(n,i);
+        }
+    }
+    else{
+        analyzeFunction(n,0);
     }
 }
 
