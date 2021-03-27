@@ -270,19 +270,33 @@ void analyzeFunctions(int n){
         analyzeFunction(n,0);
     }
 }
+void set_filenames(FILE *fp1, FILE *fp2){
+  //Prompt the user for input and output filenames
+  //If none accepted, default to
+  char *input, output;
+  printf("Please speccify the input file (default = f.txt):");
+  scanf("%s", &input); // save the input into the filepointer
+  //check if empty
+  if ((input = scanf("%s",&input)) == ""){
+    fp1 = "f.txt";
+  }
+  else{
+    fp1 = input;
+  }
+  printf("Please specify the output file (default = g.txt):");
+  if ((output = scanf("%s",%output))== ""){
+    printf("Seting to default");
+    fp2 = "g.txt";
+  }
+  else{
+    printf("Setting to %s",output);
+    fp2 = output;
+  }
+}
 
 int main(int argc, char *argv[]){
-    int n = 32; // initialize array size 32
-    printf("Running analysis on n=32...\n");
-    analyzeFunctions(n);
-    printf("Running analysis on n=1024...\n");
-    n=1024;
-    analyzeFunctions(n);
-    printf("Running analysis on n=32768...\n");
-    n=32768;
-    analyzeFunctions(n);
-    printf("Running analysis on n=1048576...\n");
-    n=1048576;
-    analyzeFunctions(n);
-    return 0;
+  FILE *fp1;
+  FILE *fp2;
+  set_filenames(fp1,fp2);
+
 }
