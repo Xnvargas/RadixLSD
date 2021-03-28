@@ -275,16 +275,16 @@ void set_filenames(FILE *fp1, FILE *fp2){
   //If none accepted, default to
   char *input, output;
   printf("Please speccify the input file (default = f.txt):");
-  scanf("%s", &input); // save the input into the filepointer
+  scanf("%s", input); // save the input into the filepointer
   //check if empty
-  if ((input = scanf("%s",&input)) == ""){
+  if ((input = scanf("%s",input)) == ""){
     fp1 = "f.txt";
   }
   else{
     fp1 = input;
   }
   printf("Please specify the output file (default = g.txt):");
-  if ((output = scanf("%s",%output))== ""){
+  if ((output = scanf("%s",output))== ""){
     printf("Seting to default");
     fp2 = "g.txt";
   }
